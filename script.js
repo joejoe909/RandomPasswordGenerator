@@ -17,7 +17,16 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword()
 {
-  //Generate your text here.
+  //Generate your series of prompts here.
+  //***Prompt for user criteria */
+  //**promp length must be 8 to 128 characters*/
+  //**Prompt for character types. */
+  //**promp for lower, uppercase, numeric and/or special characters */
+  //
+  //**Validate input */ 
+  //**make sure one of the character types are selected */
+  //generate the password
+  //return value.
    var text = prompt("enter text");
    console.log(text);
    return text;
