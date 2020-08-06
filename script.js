@@ -27,35 +27,34 @@ function isBool(testBool) {
 function generatePassword() {
   var lcArray = "abcdefghijklmnopqrstuvwxyz"; //lc = lower case array
   var ucArray = lcArray.toUpperCase(); //uc = upper case array
-  var spChar = "!@#$%^&*()_-+?<>{}[]]|\\:;~`";
+  var spChar = "!@#$%^&*()_-+?<>~`";
   var num = "123456789";
 
-  
-  var cLength 
-  for(lengthChk = false; lengthChk === false;) //loop if parametrs are invalid.
+
+  var cLength
+  for (lengthChk = false; lengthChk === false;) //loop if parametrs are invalid.
   {
-      cLength = parseInt(prompt("How many charcters do you want in your password? Please chose between 8 and 128."));   //cLength = character length.
-      lengthChk = isNumber(cLength); //test cLength is correct to move on.
-      if(lengthChk === false) ("invalid selection try again"); 
+    cLength = parseInt(prompt("How many charcters do you want in your password? Please chose between 8 and 128."));   //cLength = character length.
+    lengthChk = isNumber(cLength); //test cLength is correct to move on.
+    if (lengthChk === false) ("invalid selection try again");
   }
-  
-  
+
+
   var alpha = confirm("Do you want alpha characters generated?");     //bool
-  if(alpha){                                                          //if user doesn't want alpha we don't need to ask for upper or lower case numbers.
+  if (alpha) {                                                          //if user doesn't want alpha we don't need to ask for upper or lower case numbers.
     var lowerCase = confirm("Do you want lower case?");               //bool
     var upperCase = confirm("Do you want upper case?");               //bool
-  }else{
+  } else {
     lowerCase = false;
     upperCase = false;
   }
   var numeric = confirm("Do you want numerical characters?");         //bool
   var specialChr = confirm("Do you want special characters?")         //bool
-  
-   if((alpha && numeric && specialChr) === false)
-   {
-      alert("Your selections dosen't allow for a valid number randomization, re-run script.");
-      return; 
-   }
+
+  if ((alpha && numeric && specialChr) === false) {
+    alert("Your selections dosen't allow for a valid number randomization, re-run script.");
+    return;
+  }
 
   console.log(cLength);
   console.log(alpha);
@@ -64,41 +63,51 @@ function generatePassword() {
   console.log(numeric);
   console.log(specialChr);
 
-
-  var rgnValue = "";   //rgn = random generated value holder
-  var rndSeed1 = [0,1,2,3,4,5,6,7,8,9]; //this is used to eliminate sequential order in the array.
-  var rndSeed2 = [0,1,2,3,4,5,6,7,8,9];
-
   debugger;
-  for(var i = 0; i < cLength; i++)
-  { 
-       if(!(rgnValue.length > cLength))   //This statment is required to keep the password === to cLength 
-       {      
-          if (alpha && lowerCase && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
-            rgnValue += genRandomValue(lcArray);
-          }
+  var rgnValue = "";   //rgn = random generated value holder
+  var rndSeed1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //this is used to eliminate sequential order in the array.
+  var rndSeed2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var x, y;
+   
+  for (var i = 0; i < cLength;) {
 
-          if (alpha && upperCase && (genRandomValue(rndSeed1) < genRandomValue(rndSeed2))){
-            rgnValue += genRandomValue(ucArray);
-          }
-          if (numeric && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
-            rgnValue += genRandomValue(num);
-          }
+    x = genRandomValue(rndSeed1);
+    y = genRandomValue(rndSeed2);
+    if (lowerCase && x > y) {
+      rgnValue += genRandomValue(lcArray);
+      if (!(i >= cLength)) i++;
+    }
+    x = genRandomValue(rndSeed1);
+    y = genRandomValue(rndSeed2);
+    if (upperCase && x > y) {
+      rgnValue += genRandomValue(ucArray);
+      if (!(i >= cLength)) i++;
+    }
 
-          if (specialChr && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
-            rgnValue += genRandomValue(spChar);
-          }
-        }  
+    x = genRandomValue(rndSeed1);
+    y = genRandomValue(rndSeed2);
+    if (numeric && x > y) {
+      rgnValue += genRandomValue(num);
+      if (!(i >= cLength)) i++;
+    }
+    x = genRandomValue(rndSeed1);
+    y = genRandomValue(rndSeed2);
+    if (specialChr && x > y) {
+      rgnValue += genRandomValue(spChar);
+      if (!(i >= cLength)) i++;
+    }
   }
-  console.log("rgnValue generated" + rgnValue + " rgnLength " + rgnValue.length);
 
- return rgnValue;
+
+  console.log("rgnValue generated    " + rgnValue + " rgnLength " + rgnValue.length);
+
+  return rgnValue;
 
 }
 
-function genRandomValue(aValue){
-   return aValue[Math.floor(Math.random() * aValue.length)];
-  }
+function genRandomValue(aValue) {
+  return aValue[Math.floor(Math.random() * aValue.length)];
+}
 
 
 
