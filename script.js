@@ -66,26 +66,33 @@ function generatePassword() {
 
 
   var rgnValue = "";   //rgn = random generated value holder
+  var rndSeed1 = [0,1,2,3,4,5,6,7,8,9]; //this is used to eliminate sequential order in the array.
+  var rndSeed2 = [0,1,2,3,4,5,6,7,8,9];
 
+  debugger;
   for(var i = 0; i < cLength; i++)
-  {
-    if(alpha && lowerCase){
-      rgnValue += genRandomValue(lcArray);
-    }
+  { 
+       if(!(rgnValue.length > cLength))   //This statment is required to keep the password === to cLength 
+       {      
+          if (alpha && lowerCase && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
+            rgnValue += genRandomValue(lcArray);
+          }
 
-    if(alpha && upperCase){
-      rgnValue += genRandomValue(ucArray);
-    }
-    if(numeric){
-      rgnValue += genRandomValue(num);
-    }
+          if (alpha && upperCase && (genRandomValue(rndSeed1) < genRandomValue(rndSeed2))){
+            rgnValue += genRandomValue(ucArray);
+          }
+          if (numeric && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
+            rgnValue += genRandomValue(num);
+          }
 
-    if(specialChr){
-      rgnValue += genRandomValue(spChar);
-    }
+          if (specialChr && (genRandomValue(rndSeed1) > genRandomValue(rndSeed2))){
+            rgnValue += genRandomValue(spChar);
+          }
+        }  
   }
-  console.log(rgnValue);
-  return rgnValue;
+  console.log("rgnValue generated" + rgnValue + " rgnLength " + rgnValue.length);
+
+ return rgnValue;
 
 }
 
