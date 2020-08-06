@@ -73,26 +73,26 @@ function generatePassword() {
 
     a = genRandomValue(rndSeed1);
     b = genRandomValue(rndSeed2);
-    if (lowerCase && a > b) {
+    if (lowerCase && (a > b)) {
       rgnValue += genRandomValue(lcArray);
       if (i < cLength) i++;
     }
     c = genRandomValue(rndSeed1);
     d = genRandomValue(rndSeed2);
-    if (upperCase && c > d) {
+    if (upperCase && (c > d)) {
       rgnValue += genRandomValue(ucArray);
       if (i < cLength) i++;
     }
 
     e = genRandomValue(rndSeed1);
     f = genRandomValue(rndSeed2);
-    if (numeric && e > f) {
+    if (numeric && (e > f)) {
       rgnValue += genRandomValue(num);
       if (i < cLength) i++;
     }
     g = genRandomValue(rndSeed1);
     h = genRandomValue(rndSeed2);
-    if (specialChr && g > h) {
+    if (specialChr && (g > h)) {
       rgnValue += genRandomValue(spChar);
       if (i < cLength) i++;
     }
