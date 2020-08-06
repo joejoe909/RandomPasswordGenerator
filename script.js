@@ -68,40 +68,44 @@ function generatePassword() {
   var rndSeed1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //this is used to eliminate sequential order in the array.
   var rndSeed2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   var a, b, c, d, e, f, g,h;
-   
-  for (var i = 0; i < cLength;) {
+  var outMon; 
+
+  for (; rgnValue.length < cLength;) {
 
     a = genRandomValue(rndSeed1);
     b = genRandomValue(rndSeed2);
     if (lowerCase && (a > b)) {
       rgnValue += genRandomValue(lcArray);
-      if (i < cLength) i++;
+      outMon = rgnValue.length;
     }
     c = genRandomValue(rndSeed1);
     d = genRandomValue(rndSeed2);
     if (upperCase && (c > d)) {
       rgnValue += genRandomValue(ucArray);
-      if (i < cLength) i++;
+      outMon = rgnValue.length;
     }
 
     e = genRandomValue(rndSeed1);
     f = genRandomValue(rndSeed2);
     if (numeric && (e > f)) {
       rgnValue += genRandomValue(num);
-      if (i < cLength) i++;
+      outMon = rgnValue.length;
     }
     g = genRandomValue(rndSeed1);
     h = genRandomValue(rndSeed2);
     if (specialChr && (g > h)) {
       rgnValue += genRandomValue(spChar);
-      if (i < cLength) i++;
+      outMon = rgnValue.length;
     }
   }
 
 
-  console.log("rgnValue generated    " + rgnValue + " rgnLength " + rgnValue.length);
+  console.log("rgnValue generated" + rgnValue + " rgnLength " + rgnValue.length);
+  
+  testValue = rgnValue.substring(0, cLength);
+  console.log("testValue is " + testValue.length);
 
-  return rgnValue;
+  return testValue;
 
 }
 
