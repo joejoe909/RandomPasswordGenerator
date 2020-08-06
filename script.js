@@ -51,7 +51,7 @@ function generatePassword() {
   var numeric = confirm("Do you want numerical characters?");         //bool
   var specialChr = confirm("Do you want special characters?")         //bool
 
-  if ((alpha && numeric && specialChr) === false) {
+  if ((alpha === false) && (numeric === false) && (specialChr === false)) {
     alert("Your selections dosen't allow for a valid number randomization, re-run script.");
     return;
   }
@@ -99,13 +99,7 @@ function generatePassword() {
     }
   }
 
-
-  console.log("rgnValue generated" + rgnValue + " rgnLength " + rgnValue.length);
-  
-  testValue = rgnValue.substring(0, cLength);
-  console.log("testValue is " + testValue.length);
-
-  return testValue;
+  return rgnValue = rgnValue.substring(0, cLength);
 
 }
 
