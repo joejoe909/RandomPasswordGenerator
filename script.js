@@ -67,34 +67,34 @@ function generatePassword() {
   var rgnValue = "";   //rgn = random generated value holder
   var rndSeed1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //this is used to eliminate sequential order in the array.
   var rndSeed2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var x, y;
+  var a, b, c, d, e, f, g,h;
    
   for (var i = 0; i < cLength;) {
 
-    x = genRandomValue(rndSeed1);
-    y = genRandomValue(rndSeed2);
-    if (lowerCase && x > y) {
+    a = genRandomValue(rndSeed1);
+    b = genRandomValue(rndSeed2);
+    if (lowerCase && a > b) {
       rgnValue += genRandomValue(lcArray);
-      if (!(i >= cLength)) i++;
+      if (i < cLength) i++;
     }
-    x = genRandomValue(rndSeed1);
-    y = genRandomValue(rndSeed2);
-    if (upperCase && x > y) {
+    c = genRandomValue(rndSeed1);
+    d = genRandomValue(rndSeed2);
+    if (upperCase && c > d) {
       rgnValue += genRandomValue(ucArray);
-      if (!(i >= cLength)) i++;
+      if (i < cLength) i++;
     }
 
-    x = genRandomValue(rndSeed1);
-    y = genRandomValue(rndSeed2);
-    if (numeric && x > y) {
+    e = genRandomValue(rndSeed1);
+    f = genRandomValue(rndSeed2);
+    if (numeric && e > f) {
       rgnValue += genRandomValue(num);
-      if (!(i >= cLength)) i++;
+      if (i < cLength) i++;
     }
-    x = genRandomValue(rndSeed1);
-    y = genRandomValue(rndSeed2);
-    if (specialChr && x > y) {
+    g = genRandomValue(rndSeed1);
+    h = genRandomValue(rndSeed2);
+    if (specialChr && g > h) {
       rgnValue += genRandomValue(spChar);
-      if (!(i >= cLength)) i++;
+      if (i < cLength) i++;
     }
   }
 
