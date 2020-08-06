@@ -1,9 +1,6 @@
-This is A Random Password Generator.
+This is a Random Password Generator.
 
-It will randomly generate passwords based on criteria you give based on alpha, numberic and special characters. 
-
-
-
+It will randomly generate passwords based on criteria you give based on alpha, numberic and special characters. The main number generating function takes steps to reduce any possibility of patternization. 
 
 # 03 JavaScript: Password Generator
 
