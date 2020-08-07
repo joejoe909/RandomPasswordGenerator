@@ -52,16 +52,9 @@ function generatePassword() {
   var specialChr = confirm("Do you want special characters?")         //bool
 
   if ((alpha === false) && (numeric === false) && (specialChr === false)) {
-    alert("Your selections dosen't allow for a valid number randomization, re-run script.");
+    alert("Your selections don't allow for valid number randomization, re-run script.");
     return;
   }
-
-  console.log(cLength);
-  console.log(alpha);
-  console.log(lowerCase);
-  console.log(upperCase);
-  console.log(numeric);
-  console.log(specialChr);
 
   debugger;
   var rgnValue = "";   //rgn = random generated value holder
